@@ -80,6 +80,18 @@ const Navbar = () => {
                   Explore
                 </a>
               </li>
+              {/* Search Input For Small Devices */}
+              <li>
+                <a>
+                  <div className="md:hidden form-control flex items-center justify-start">
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      className="input input-bordered w-full md:w-auto"
+                    />
+                  </div>
+                </a>
+              </li>
             </ul>
           </div>
           <Link
@@ -91,8 +103,8 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end flex items-center gap-3">
-          {/* Search Input */}
-          <div className="form-control flex items-center justify-center">
+          {/* Search Input For Medium To Large Devices */}
+          <div className="hidden form-control md:flex items-center justify-center">
             <input
               type="text"
               placeholder="Search for contacts or events"

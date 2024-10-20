@@ -1,11 +1,14 @@
-import React from 'react';
+import React from "react";
+import { Helmet } from "react-helmet-async";
 
 const MyHome = () => {
-    return (
-        <div>
-            <h2>My Home</h2>
-        </div>
-    );
+  return (
+    <>
+      <Helmet>
+        <title>My Home | Makerble</title>
+      </Helmet>
+    </>
+  );
 };
 
 export default MyHome;

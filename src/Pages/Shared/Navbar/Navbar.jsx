@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <section className="bg-gray-100">
-      <div className="navbar h-20 max-w-screen-2xl mx-auto">
+      <div className="navbar h-20">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -152,7 +152,7 @@ const Navbar = () => {
           </div>
 
           {/* Profile */}
-          <div className="dropdown dropdown-end relative flex items-center justify-center">
+          <div className="dropdown dropdown-end relative flex items-center justify-center pr-2">
             <div
               tabIndex={0}
               role="button"

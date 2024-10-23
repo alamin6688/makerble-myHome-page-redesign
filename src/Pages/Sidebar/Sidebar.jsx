@@ -8,94 +8,93 @@ import { FaTasks } from "react-icons/fa";
 import { MdOutlineNotificationsActive } from "react-icons/md";
 import { LuClipboardSignature, LuSettings } from "react-icons/lu";
 import { TiHomeOutline } from "react-icons/ti";
-import { Outlet } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const Dashboard = () => {
+const Sidebar = () => {
   const [isCollapse, setIsCollapse] = useState(true);
   const [isDropdownOpen, setIsDropdownOpen] = useState(true);
 
   return (
-    <div className="flex">
-      {/* Sidebar / Drawer */}
-      <aside
-        className={`bg-gray-100 ${
-          isCollapse ? "w-[40%] md:w-[20%] lg:w-[15%]" : "w-[80px]"
-        }
+    <aside
+      className={`bg-gray-100 ${
+        isCollapse ? "w-[40%] md:w-[20%] lg:w-[15%]" : "w-[80px]"
+      }
      min-h-screen boxShadow transition-all duration-300 ease`}
+    >
+      <div
+        className={`pt-4 ${
+          isCollapse ? "px-[20px]" : "px-[10px]"
+        } transition-all duration-300 ease-in-out`}
       >
-        <div
-          className={`pt-4 ${
-            isCollapse ? "px-[20px]" : "px-[10px]"
-          } transition-all duration-300 ease-in-out`}
-        >
-          {isCollapse ? (
-            <div className="flex items-center justify-between">
-              <div className="pl-1">
-                <h1 className="text-2xl font-extrabold tracking-wide  text-gray-800">
-                  Mekrble
-                </h1>
-              </div>
-              <div className="relative group">
-                <GoSidebarCollapse
-                  className="text-[1.5rem] text-gray-600 cursor-pointer"
-                  onClick={() => setIsCollapse(false)}
-                />
-
-                {/* tooltip */}
-                <div
-                  className={`absolute -top-1 right-[-115px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
-                >
-                  <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
-                    Collapse
-                  </p>
-                </div>
-              </div>
+        {isCollapse ? (
+          <div className="flex items-center justify-between">
+            <div className="pl-1">
+              <h1 className="text-2xl font-extrabold tracking-wide  text-gray-800">
+                Mekrble
+              </h1>
             </div>
-          ) : (
-            <div>
-              <button
-                onClick={() => setIsCollapse(!isCollapse)}
-                class="w-[50px] mx-auto cursor-pointer flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 text-white font-extrabold text-lg rounded-full shadow-2xl hover:from-blue-600 hover:via-blue-700 hover:to-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-70 active:bg-blue-800 active:shadow-inner transform hover:scale-110 transition duration-500 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                M
-              </button>
-            </div>
-          )}
-
-          {/* search bar */}
-          {isCollapse ? (
-            <div className="relative mt-5">
-              <input
-                className="px-4 py-2 border border-border rounded-md w-full pl-[40px] outline-none focus:border-primary"
-                placeholder="Search..."
+            <div className="relative group">
+              <GoSidebarCollapse
+                className="text-[1.5rem] text-gray-600 cursor-pointer"
+                onClick={() => setIsCollapse(false)}
               />
-              <IoIosSearch className="absolute top-[9px] left-2 text-[1.5rem] text-[#adadad]" />
-            </div>
-          ) : (
-            <div className="w-full relative group">
-              <IoIosSearch className="text-[2rem] mx-auto text-gray-500 mt-2 p-[5px] rounded-md hover:bg-gray-100 cursor-pointer w-full" />
 
               {/* tooltip */}
               <div
-                className={`${
-                  isCollapse ? "hidden" : "inline"
-                } absolute top-0 right-[-85px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                className={`absolute -top-1 right-[-115px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
               >
-                <p className="text-[0.9rem] w-max bg-gray-600 text-white rounded px-3 py-[5px]">
-                  Search
+                <p className="text-[0.9rem] w-max bg-gray-600 text-secondary rounded px-3 py-[5px]">
+                  Collapse
                 </p>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div>
+            <button
+              onClick={() => setIsCollapse(!isCollapse)}
+              class="w-[50px] mx-auto cursor-pointer flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 text-white font-extrabold text-lg rounded-full shadow-2xl hover:from-blue-600 hover:via-blue-700 hover:to-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-70 active:bg-blue-800 active:shadow-inner transform hover:scale-110 transition duration-500 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              M
+            </button>
+          </div>
+        )}
 
-        {/* general section */}
-        <div
-          className={`mt-6 ${
-            isCollapse ? "px-[20px]" : "px-[10px]"
-          } transition-all duration-300 ease-in-out`}
-        >
-          {/* Newsfeed */}
+        {/* search bar */}
+        {isCollapse ? (
+          <div className="relative mt-5">
+            <input
+              className="px-4 py-2 border border-border rounded-md w-full pl-[40px] outline-none focus:border-primary"
+              placeholder="Search..."
+            />
+            <IoIosSearch className="absolute top-[9px] left-2 text-[1.5rem] text-[#adadad]" />
+          </div>
+        ) : (
+          <div className="w-full relative group">
+            <IoIosSearch className="text-[2rem] mx-auto text-gray-500 mt-2 p-[5px] rounded-md hover:bg-gray-100 cursor-pointer w-full" />
+
+            {/* tooltip */}
+            <div
+              className={`${
+                isCollapse ? "hidden" : "inline"
+              } absolute top-0 right-[-85px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+            >
+              <p className="text-[0.9rem] w-max bg-gray-600 text-white rounded px-3 py-[5px]">
+                Search
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* general section */}
+      <div
+        className={`mt-6 ${
+          isCollapse ? "px-[20px]" : "px-[10px]"
+        } transition-all duration-300 ease-in-out`}
+      >
+        {/* Newsfeed */}
+        <NavLink to={`/`}>
           <div className="mt-3 flex flex-col gap-[5px]">
             <div
               className={`${
@@ -126,33 +125,35 @@ const Dashboard = () => {
             </div>
 
             {/* Events */}
-            <div
-              className={`${
-                isCollapse ? "justify-between" : "justify-center"
-              } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
-            >
-              <div className="flex items-center gap-[8px]">
-                <CiCalendar className="text-[1.3rem] text-gray-500" />
-                <p
-                  className={`${
-                    isCollapse ? "inline" : "hidden"
-                  } text-[1rem] font-[400] text-gray-500`}
-                >
-                  Events
-                </p>
-              </div>
-
-              {/* tooltip */}
+            <NavLink to={"/events"}>
               <div
                 className={`${
-                  isCollapse ? "hidden" : "inline"
-                } absolute top-0 right-[-99px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  isCollapse ? "justify-between" : "justify-center"
+                } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
               >
-                <p className="text-[0.9rem] w-max bg-gray-600 text-white rounded px-3 py-[5px]">
-                  Events
-                </p>
+                <div className="flex items-center gap-[8px]">
+                  <CiCalendar className="text-[1.3rem] text-gray-500" />
+                  <p
+                    className={`${
+                      isCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500`}
+                  >
+                    Events
+                  </p>
+                </div>
+
+                {/* tooltip */}
+                <div
+                  className={`${
+                    isCollapse ? "hidden" : "inline"
+                  } absolute top-0 right-[-99px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                >
+                  <p className="text-[0.9rem] w-max bg-gray-600 text-white rounded px-3 py-[5px]">
+                    Events
+                  </p>
+                </div>
               </div>
-            </div>
+            </NavLink>
             {/* Tasks */}
             <div
               className={`${
@@ -313,110 +314,104 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-        </div>
+        </NavLink>
+      </div>
 
-        {/* Notoficaton & Setting section */}
-        <div
-          className={`${
-            isCollapse ? "px-[20px]" : "px-[10px]"
-          } mt-6 border-t border-gray-200  transition-all duration-300 ease-in-out`}
-        >
-          <div className="mt-3 flex flex-col gap-[5px]">
-            {/* Home */}
-            <div
-              className={`${
-                isCollapse ? "justify-between" : "justify-center"
-              } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
-            >
-              <div className="flex items-center gap-[8px]">
-                <TiHomeOutline className="text-[1.3rem] text-gray-500" />
-                <p
-                  className={`${
-                    isCollapse ? "inline" : "hidden"
-                  } text-[1rem] font-[400] text-gray-500`}
-                >
-                  Home
-                </p>
-              </div>
-
-              {/* tooltip */}
-              <div
+      {/* Notoficaton & Setting section */}
+      <div
+        className={`${
+          isCollapse ? "px-[20px]" : "px-[10px]"
+        } mt-6 border-t border-gray-200  transition-all duration-300 ease-in-out`}
+      >
+        <div className="mt-3 flex flex-col gap-[5px]">
+          {/* Home */}
+          <div
+            className={`${
+              isCollapse ? "justify-between" : "justify-center"
+            } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+          >
+            <div className="flex items-center gap-[8px]">
+              <TiHomeOutline className="text-[1.3rem] text-gray-500" />
+              <p
                 className={`${
-                  isCollapse ? "hidden" : "inline"
-                } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  isCollapse ? "inline" : "hidden"
+                } text-[1rem] font-[400] text-gray-500`}
               >
-                <p className="text-[0.9rem] w-max bg-gray-600 text-white rounded px-3 py-[5px]">
-                  Home
-                </p>
-              </div>
+                Home
+              </p>
             </div>
-            {/* Notifications */}
+
+            {/* tooltip */}
             <div
               className={`${
-                isCollapse ? "justify-between" : "justify-center"
-              } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+                isCollapse ? "hidden" : "inline"
+              } absolute top-0 right-[-80px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
             >
-              <div className="flex items-center gap-[8px]">
-                <MdOutlineNotificationsActive className="text-[1.3rem] text-gray-500" />
-                <p
-                  className={`${
-                    isCollapse ? "inline" : "hidden"
-                  } text-[1rem] font-[400] text-gray-500`}
-                >
-                  Notifications
-                </p>
-              </div>
-
-              {/* tooltip */}
-              <div
-                className={`${
-                  isCollapse ? "hidden" : "inline"
-                } absolute top-0 right-[-98px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
-              >
-                <p className="text-[0.9rem] w-max bg-gray-600 text-white rounded px-3 py-[5px]">
-                  Notifications
-                </p>
-              </div>
+              <p className="text-[0.9rem] w-max bg-gray-600 text-white rounded px-3 py-[5px]">
+                Home
+              </p>
             </div>
-            {/* Settings */}
+          </div>
+          {/* Notifications */}
+          <div
+            className={`${
+              isCollapse ? "justify-between" : "justify-center"
+            } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+          >
+            <div className="flex items-center gap-[8px]">
+              <MdOutlineNotificationsActive className="text-[1.3rem] text-gray-500" />
+              <p
+                className={`${
+                  isCollapse ? "inline" : "hidden"
+                } text-[1rem] font-[400] text-gray-500`}
+              >
+                Notifications
+              </p>
+            </div>
+
+            {/* tooltip */}
             <div
               className={`${
-                isCollapse ? "justify-between" : "justify-center"
-              } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+                isCollapse ? "hidden" : "inline"
+              } absolute top-0 right-[-98px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
             >
-              <div className="flex items-center gap-[8px]">
-                <LuSettings className="text-[1.3rem] text-gray-500" />
-                <p
-                  className={`${
-                    isCollapse ? "inline" : "hidden"
-                  } text-[1rem] font-[400] text-gray-500`}
-                >
-                  Settings
-                </p>
-              </div>
-
-              {/* tooltip */}
-              <div
+              <p className="text-[0.9rem] w-max bg-gray-600 text-white rounded px-3 py-[5px]">
+                Notifications
+              </p>
+            </div>
+          </div>
+          {/* Settings */}
+          <div
+            className={`${
+              isCollapse ? "justify-between" : "justify-center"
+            } flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}
+          >
+            <div className="flex items-center gap-[8px]">
+              <LuSettings className="text-[1.3rem] text-gray-500" />
+              <p
                 className={`${
-                  isCollapse ? "hidden" : "inline"
-                } absolute top-0 right-[-98px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+                  isCollapse ? "inline" : "hidden"
+                } text-[1rem] font-[400] text-gray-500`}
               >
-                <p className="text-[0.9rem] w-max bg-gray-600 text-white rounded px-3 py-[5px]">
-                  Settings
-                </p>
-              </div>
+                Settings
+              </p>
+            </div>
+
+            {/* tooltip */}
+            <div
+              className={`${
+                isCollapse ? "hidden" : "inline"
+              } absolute top-0 right-[-98px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+            >
+              <p className="text-[0.9rem] w-max bg-gray-600 text-white rounded px-3 py-[5px]">
+                Settings
+              </p>
             </div>
           </div>
         </div>
-      </aside>
-
-      <div className="p-4 md:p-6">
-        <Outlet />
-
-        {/* Content Goes Here */}
       </div>
-    </div>
+    </aside>
   );
 };
 
-export default Dashboard;
+export default Sidebar;
